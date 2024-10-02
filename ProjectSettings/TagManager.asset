@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - UI_KeyArea
+  - UI_BlackFade
   layers:
   - Default
   - TransparentFX

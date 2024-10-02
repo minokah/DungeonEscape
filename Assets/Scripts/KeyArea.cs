@@ -24,6 +24,21 @@ public class KeyArea : MonoBehaviour
         }
     }
 
+    public bool Grabbed(string s)
+    {
+        switch (s)
+        {
+            case "red":
+                return redGet;
+            case "green":
+                return greenGet;
+            case "blue":
+                return blueGet;
+        }
+
+        return false;
+    }
+
     private void SetRedKeyGrabbed(bool t)
     {
         if (t)

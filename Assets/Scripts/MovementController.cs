@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,8 +6,8 @@ public class MovementController : MonoBehaviour
 {
     public CharacterController controller;
     public Transform camera;
+    public GameObject playerCamera;
     public AudioSource footstepAudio;
-    public AudioSource landingAudio;
 
     Animator animator;
 
@@ -15,7 +16,9 @@ public class MovementController : MonoBehaviour
     //Used for smoothing turns
     public float SmoothTime = 0.3f;
 
-    //A reference variable which will hold the target's velocity while turning
+    // Movement and Camera locks
+    public bool canMove = true;
+
     private float velocity;
     private bool grounded = true;
     private bool moving = false;
@@ -29,6 +32,16 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Allowed to move?
+        if (!canMove)
+        {
+            animator.SetBool("Idle", true);
+            animator.SetFloat("MovementVertical", 0);
+            animator.SetBool("Jumping", false);
+            footstepAudio.Stop();
+            return;
+        }
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
@@ -91,7 +104,18 @@ public class MovementController : MonoBehaviour
             jumpDelay = 0;
             grounded = true;
             animator.SetBool("Jumping", false);
-            landingAudio.Play();
         }
+    }
+
+    public void Teleport(Vector3 position)
+    {
+        controller.enabled = false;
+        controller.transform.position = position;
+        controller.enabled = true;
+    }
+
+    public void SetCamActive(bool active)
+    {
+        playerCamera.SetActive(active);
     }
 }

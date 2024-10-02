@@ -8,7 +8,7 @@ public class KeyGrab : MonoBehaviour
     public string colour;
     public AudioSource pickup;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
         {
