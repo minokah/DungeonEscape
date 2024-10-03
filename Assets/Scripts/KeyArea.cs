@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class KeyArea : MonoBehaviour
 {
     public RawImage red, green, blue;
-    private bool redGet, greenGet, blueGet;
+    private bool redGet, greenGet, blueGet = true;
 
     public void GrabKey(string s)
     {

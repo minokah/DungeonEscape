@@ -4,7 +4,11 @@ using UnityEngine;
 
 public static class Global
 {
-    public static MovementController PlayerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
-    public static BlackFade BlackFade = GameObject.FindGameObjectWithTag("UI_BlackFade").GetComponent<BlackFade>();
-    public static KeyArea KeyArea = GameObject.FindGameObjectWithTag("UI_KeyArea").GetComponent<KeyArea>();
+    public static MovementController PlayerMovement;
+    public static BlackFade BlackFade;
+    public static BlackBars BlackBars;
+    public static KeyArea KeyArea;
+    public static KeyPrompt KeyPrompt;
+    public static Timer Timer;
+    public static ExitCutscene ExitCutscene;
 }

@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - UI_KeyArea
   - UI_BlackFade
+  - UI_KeyPrompt
+  - UI_Timer
+  - UI_BlackBars
+  - ExitCutscene
   layers:
   - Default
   - TransparentFX
