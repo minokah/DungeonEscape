@@ -9,10 +9,9 @@ public class BlackFade : MonoBehaviour
     float time = 0;
     float rate = 0.01f;
     public bool toBlack = false;
-    public bool faded = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         image = GetComponent<Image>();
     }
@@ -24,25 +23,21 @@ public class BlackFade : MonoBehaviour
         {
             if (!toBlack)
             {
-                if (image.color.a > 0)
-                {
-                    image.color = new Color(0, 0, 0, image.color.a - rate);
-                    faded = false;
-                }
-                else faded = true;
+                if (image.color.a > 0) image.color = new Color(0, 0, 0, image.color.a - rate);
             }
             else
             {
-                if (image.color.a < 1)
-                {
-                    image.color = new Color(0, 0, 0, image.color.a + rate);
-                    faded = false;
-                }
-                else faded = true;
+                if (image.color.a < 1) image.color = new Color(0, 0, 0, image.color.a + rate);
             }
+
             time = 0;
         }
         
         time += Time.deltaTime;
+    }
+
+    public void SetOpacity(float n)
+    {
+        image.color = new Color(0, 0, 0, n);
     }
 }

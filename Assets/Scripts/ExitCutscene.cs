@@ -27,6 +27,7 @@ public class ExitCutscene : MonoBehaviour
         Global.BlackBars.active = true;
         camera.SetActive(true);
         Global.PlayerMovement.canMove = false;
+        Global.PlayerMovement.footstepAudio.Stop();
         Global.PlayerMovement.SetCamActive(false);
         Global.PlayerMovement.enabled = false;
         controller.enabled = false;
@@ -50,10 +51,19 @@ public class ExitCutscene : MonoBehaviour
                 Vector3 vector = exitPosition.position - controller.transform.position;
                 vector.Normalize();
                 controller.Move(vector * Time.deltaTime * 3);
+                Global.PlayerMovement.footstepAudio.Play();
             }
 
             if (time > 5) {
                 Global.BlackFade.toBlack = true;
+            }
+
+            if (time > 8)
+            {
+                Global.PlayerMovement.footstepAudio.Stop();
+                Global.ScoreInput.Show();
+                Cursor.lockState = CursorLockMode.None;
+                Global.PauseMenu.gameObject.SetActive(false);
             }
 
             time += Time.deltaTime;

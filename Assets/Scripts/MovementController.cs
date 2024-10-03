@@ -68,7 +68,7 @@ public class MovementController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         // Rotate character in direction of camera if we've moving, otherwise allow freelook
-        if (moving)
+        if (canMove && moving)
         {
             //We will normalize this direction vector to make sure players don't move faster on diagonals (ex. holding W and A)
             //This will ensure the vector is always length 1

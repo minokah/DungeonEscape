@@ -11,6 +11,8 @@ TagManager:
   - UI_Timer
   - UI_BlackBars
   - ExitCutscene
+  - UI_ScoreInput
+  - UI_PauseMenu
   layers:
   - Default
   - TransparentFX

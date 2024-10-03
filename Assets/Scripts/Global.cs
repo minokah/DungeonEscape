@@ -11,4 +11,6 @@ public static class Global
     public static KeyPrompt KeyPrompt;
     public static Timer Timer;
     public static ExitCutscene ExitCutscene;
+    public static ScoreInput ScoreInput;
+    public static PauseMenu PauseMenu;
 }
